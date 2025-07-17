@@ -51,14 +51,16 @@ class FilmsManagerTest {
     {
         FilmsManager manager = new FilmsManager(); // Создаем менеджер. Который тестируем
 
-        manager.addFilm("Бладшот");
-        manager.addFilm("Вперед");
-        manager.addFilm("Отель 'Белград'");
-        manager.addFilm("Джентельмены");
-        manager.addFilm("Человек-невидимка");
+        String film1 = "Бладшот";
+        String film2 = "Вперед";
+        String film3 = "Отель 'Белград'";
 
-        String[] expected = {"Человек-невидимка", "Джентельмены", "Отель 'Белград'", "Вперед", "Бладшот"}; // фактический результат. Добавить 5 фильмов
+        manager.addFilm(film1);
+        manager.addFilm(film2);
+        manager.addFilm(film3);
+
         String[] actual = manager.findLast(); // ожидаемый результат. Добавить 1 фильм
+        String[] expected = {film3, film2, film1}; // фактический результат. Добавить 5 фильмов
 
         Assertions.assertArrayEquals(expected, actual); // Проверка
     }
@@ -66,16 +68,26 @@ class FilmsManagerTest {
     @Test
     public void showMoreLimit() // Тест Покажи больше лимита
     {
-        FilmsManager manager = new FilmsManager(); // Создаем менеджер. Который тестируем
+        FilmsManager manager = new FilmsManager(5); // Создаем менеджер. Который тестируем
 
-        manager.addFilm("Бладшот");
-        manager.addFilm("Вперед");
-        manager.addFilm("Отель 'Белград'");
-        manager.addFilm("Джентельмены");
-        manager.addFilm("Человек-невидимка");
+        String film1 = "Бладшот";
+        String film2 = "Вперед";
+        String film3 = "Отель 'Белград'";
+        String film4 = "Джентельмены";
+        String film5 = "Человек-невидимка";
+        String film6 = "Номер один";
 
-        String[] expected = {"Человек-невидимка", "Джентельмены", "Отель 'Белград'", "Вперед", "Бладшот"}; // фактический результат. Добавить 5 фильмов
+
+        manager.addFilm(film1);
+        manager.addFilm(film2);
+        manager.addFilm(film3);
+        manager.addFilm(film4);
+        manager.addFilm(film5);
+        manager.addFilm(film6);
+
         String[] actual = manager.findLast(); // ожидаемый результат. Добавить 1 фильм
+        String[] expected = {film6, film5, film4, film3, film2}; // фактический результат. Добавить 5 фильмов
+
 
         Assertions.assertArrayEquals(expected, actual); // Проверка
     }

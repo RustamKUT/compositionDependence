@@ -29,21 +29,36 @@ public class FilmsManager {
         return films; // Возврат фильмов
     }
 
-    public String[] findLast() // Показать последние фильмы с определенным лимитом
-    {
-        int resultLength; // Создаем переменную для расчета размера ответа
-        if (films.length < limit) // Проверка Если фильмов меньше чем лимит
-        {
-            resultLength = films.length; // То возьмем сколько есть
+//    public String[] findLast() // Показать последние фильмы с определенным лимитом
+//    {
+//        int resultLength; // Создаем переменную для расчета размера ответа
+//        if (films.length < limit) // Проверка Если фильмов меньше чем лимит
+//        {
+//            resultLength = films.length; // То возьмем сколько есть
+//        } else {
+//            resultLength = limit; // Иначе мы возьмем лимит
+//        }
+//        String[] tmp = new String[resultLength]; // Создаем массив ответа
+//        for (int i = 0; i < tmp.length; i++)
+//        {
+//            tmp[i] = films[films.length - 1 - i]; // Заполняем его. С конца нашего поля. Размер массива - 1 - номер с конца
+//        }
+//        return tmp; // Возврат массива
+//    }
+
+    public String[] findLast() {
+        int resultLength;
+        if (limit < films.length) {
+            resultLength = limit;
         } else {
-            resultLength = limit; // Иначе мы возьмем лимит
+            resultLength = films.length;
         }
-        String[] tmp = new String[resultLength]; // Создаем массив ответа
-        for (int i = 0; i < tmp.length; i++)
-        {
-            tmp[i] = films[films.length - 1 - i]; // Заполняем его. С конца нашего поля. Размер массива - 1 - номер с конца
+        String[] tmp = new String[resultLength];
+        for (int i = 0; i < resultLength; i++) {
+            tmp[i] = films[films.length - 1 - i];
+
         }
-        return tmp; // Возврат массива
+        return tmp;
     }
 
 }
